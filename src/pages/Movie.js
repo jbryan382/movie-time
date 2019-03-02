@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-
+import MovieDetails from '../components/MovieDetails'
 class Movie extends Component {
   render() {
     return (
-      <>
-        <figure>
-          <h1>{this.props.title}</h1>
-          <img src={this.props.poster} alt="" />
-          <figcaption>{this.props.description}</figcaption>
-        </figure>
-      </>
+      <MovieDetails
+        title={this.state.title}
+        description={this.state.description}
+        genre={this.state.genre}
+        releaseDate={this.state.releaseDate}
+        poster={this.state.poster}
+      />
     )
   }
 }

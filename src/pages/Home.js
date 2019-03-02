@@ -8,49 +8,68 @@
 // v4ReadAccessToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNDc3Mzg2NTBlNjRhY2FhZjg2ZGM3ZGUwMDIxZjdkNiIsInN1YiI6IjVjNzlhMzQ0MGUwYTI2MTFkYTEwMjQ5MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.clN9_6vTaHIo6mu-n78B7Hlq7YvvIwczNwWSeyWB-TM'
 
 import React, { Component } from 'react'
-import Movie from './Movie.js'
+// import MovieDetails from '../components/MovieDetails'
 import axios from 'axios'
 
 class Home extends Component {
   state = {
-    token: '247738650e64acaaf86dc7de0021f7d6',
+    results: [],
     title: '',
     description: '',
-    genre: '',
     releaseDate: '',
-    poster: ''
+    poster: '',
+    id: ''
   }
 
   componentDidMount() {
+    const APIkey = Object.keys(this.state.id)
+    console.log(APIkey)
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/550?api_key=247738650e64acaaf86dc7de0021f7d6'
+        'https://api.themoviedb.org/3/movie/now_playing?api_key=247738650e64acaaf86dc7de0021f7d6'
       )
       .then(resp => {
         console.log({ resp })
+
         this.setState({
-          title: resp.data.title,
-          description: resp.data.overview,
-          genre: resp.data.genres[0].name,
-          releaseDate: resp.data.release_date,
-          poster: resp.data.poster_path
+          id: resp.data.results.id,
+          results: resp.data.results,
+          title: resp.data.results[2].title,
+          description: resp.data.results[2].overview,
+          releaseDate: resp.data.results[2].release_date,
+          poster: resp.data.results[2].poster_path
         })
+        console.log(this.state)
       })
   }
 
   render() {
     return (
       <>
-        <Movie
-          title={this.state.title}
-          description={this.state.description}
-          genre={this.state.genre}
-          releaseDate={this.state.releaseDate}
-          poster={this.state.poster}
-        />
+        <main>
+          {this.state.results.map((movie, i) => {
+            console.log(movie)
+            return (
+              <figure key={i}>
+                <h1>{this.state.title}</h1>
+                <h1>{this.state.releaseDate}</h1>
+                <img src={this.state.poster} alt="" />
+                <figcaption>{this.state.description}</figcaption>
+              </figure>
+            )
+          })}
+        </main>
       </>
     )
   }
 }
 
 export default Home
+
+/* <MovieDetails
+  title={this.state.title}
+  description={this.state.description}
+  genre={this.state.genre}
+  releaseDate={this.state.releaseDate}
+  poster={this.state.poster}
+/> */
