@@ -51,10 +51,10 @@ class Home extends Component {
             console.log(movie)
             return (
               <figure key={i}>
-                <h1>{this.state.title}</h1>
-                <h1>{this.state.releaseDate}</h1>
-                <img src={this.state.poster} alt="" />
-                <figcaption>{this.state.description}</figcaption>
+                <h1>{this.state.results[i].title}</h1>
+                <h1>{this.state.results[i].release_date}</h1>
+                <img src={this.state.results[i].poster_path} alt="" />
+                <figcaption>{this.state.results[i].overview}</figcaption>
               </figure>
             )
           })}
