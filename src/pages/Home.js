@@ -10,6 +10,7 @@
 import React, { Component } from 'react'
 // import MovieDetails from '../components/MovieDetails'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
   state = {
@@ -26,37 +27,15 @@ class Home extends Component {
     console.log(APIkey)
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/now_playing?api_key=247738650e64acaaf86dc7de0021f7d6'
+        'https://api.themoviedb.org/3/movie/now_playing?api_key=247738650e64acaaf86dc7de0021f7d6&append_to_response=images'
       )
       .then(resp => {
         console.log({ resp })
 
         this.setState({
           results: resp.data.results
-          // These States might not be needed until later
-          // id: resp.data.results.id,
-          // poster: resp.data.results[2].poster_path
-          // title: resp.data.results[2].title,
-          // description: resp.data.results[2].overview,
-          // releaseDate: resp.data.results[2].release_date,
         })
         console.log(this.state)
-      })
-  }
-
-  // The rest of the site is fine. This is currently extremely broken... tried to call the api using the posterpath
-  // and trying to assign ID somewhere so the correct Poster loads. I don't know if thats the correct logic to follow
-  // the API get from image is annoying.
-
-  getPoster = (pPath, pID) => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${pID}${pPath}?api_key=247738650e64acaaf86dc7de0021f7d6`
-      )
-      .then(resp => {
-        console.log({ resp })
-        // We need to return something back into the src for the poster so it shows.
-        // resp is a placeholder
       })
   }
 
@@ -70,21 +49,23 @@ class Home extends Component {
           {this.state.results.map((movie, i) => {
             console.log(movie)
             return (
-              <figure key={i}>
-                <h2>{this.state.results[i].title}</h2>
-                <img
-                  // Tried using the API URL with poster path added and it didn't like it due to no axios request
-                  // Now trying to call a function that returns the poster image from a Axios request.
-                  // Like I said I might be going about this the wrong way feel free to try something else.
-                  src={this.getPoster(
-                    this.state.results[i].poster_path,
-                    this.state.results[i].id
-                  )}
-                  alt=""
-                />
-                <figcaption>{this.state.results[i].overview}</figcaption>
-                <h3>{this.state.results[i].release_date}</h3>
-              </figure>
+              <section key={i}>
+                <figure>
+                  <Link to={`/${this.state.results[i].id}`}>
+                    <h2>{this.state.results[i].title}</h2>
+                    <img
+                      src={`https://image.tmdb.org/t/p/original${
+                        this.state.results[i].poster_path
+                      }`}
+                      alt=""
+                    />
+                  </Link>
+                </figure>
+                <section>
+                  <figcaption>{this.state.results[i].overview}</figcaption>
+                  <h3>{this.state.results[i].release_date}</h3>
+                </section>
+              </section>
             )
           })}
         </main>

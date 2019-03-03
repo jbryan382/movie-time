@@ -15,10 +15,16 @@ figure {
   border: solid 1px black;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 
 header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+img {
+  width: 20%;
+  height: 20%;
 }
