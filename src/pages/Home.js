@@ -35,10 +35,10 @@ class Home extends Component {
           results: resp.data.results
           // These States might not be needed until later
           // id: resp.data.results.id,
+          // poster: resp.data.results[2].poster_path
           // title: resp.data.results[2].title,
           // description: resp.data.results[2].overview,
           // releaseDate: resp.data.results[2].release_date,
-          // poster: resp.data.results[2].poster_path
         })
         console.log(this.state)
       })
@@ -48,23 +48,25 @@ class Home extends Component {
   // and trying to assign ID somewhere so the correct Poster loads. I don't know if thats the correct logic to follow
   // the API get from image is annoying.
 
-  getPoster = (pPath, pID) => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/now_playing${pPath}?api_key=247738650e64acaaf86dc7de0021f7d6`
-      )
-      .then(resp => {
-        console.log({ resp })
+  // getPoster = (pPath, pID) => {
+  //   axios
+  //     .get(
+  //       `https://api.themoviedb.org/3/movie/now_playing${
+  //         pPath
+  //       }?api_key=247738650e64acaaf86dc7de0021f7d6`
+  //     )
+  //     .then(resp => {
+  //       console.log({ resp })
 
-        this.setState({
-          id: pID
-        })
-        console.log(this.state)
-        // We need to return something back into the src for the poster so it shows.
-        // resp is a placeholder
-        return resp
-      })
-  }
+  //       this.setState({
+  //         id: pID
+  //       })
+  //       console.log(this.state)
+  //       // We need to return something back into the src for the poster so it shows.
+  //       // resp is a placeholder
+  //       return resp
+  //     })
+  // }
 
   render() {
     return (
@@ -82,10 +84,9 @@ class Home extends Component {
                   // Tried using the API URL with poster path added and it didn't like it due to no axios request
                   // Now trying to call a function that returns the poster image from a Axios request.
                   // Like I said I might be going about this the wrong way feel free to try something else.
-                  src={this.getPoster(
-                    this.state.results[i].poster_path,
-                    this.state.results[i].id
-                  )}
+                  src={`https://api.themoviedb.org/3/movie/now_playing${
+                    this.state.results[i].poster_path
+                  }?api_key=247738650e64acaaf86dc7de0021f7d6`}
                   alt=""
                 />
                 <figcaption>{this.state.results[i].overview}</figcaption>
@@ -108,3 +109,8 @@ export default Home
   releaseDate={this.state.releaseDate}
   poster={this.state.poster}
 /> */
+
+// this.getPoster(
+//   this.state.results[i].poster_path,
+//   this.state.results[i].id
+// )
