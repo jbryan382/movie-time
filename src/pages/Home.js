@@ -42,11 +42,12 @@ class Home extends Component {
   }
 
   randomMovie = () => {
-    let randomize = Math.floor(Math.random() * this.state.results.length)
-    let randomMovie = this.state.results[randomize]
-    console.log(randomMovie.title)
+    let randomizer = Math.floor(Math.random() * this.state.results.length)
+    let randomIndex = this.state.results[randomizer]
+    console.log(randomIndex.title)
+
     this.setState({
-      random: randomMovie
+      random: randomIndex
     })
     console.log(this.state.random)
   }
@@ -59,6 +60,7 @@ class Home extends Component {
             <h1>New And Should Be At A Theatre Near You!</h1>
           </header>
           <figure>
+            <h2>Featured movie:</h2>
             <Link to={`/${this.state.random.id}`}>
               <h2>{this.state.random.title}</h2>
               <img
