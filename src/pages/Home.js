@@ -59,22 +59,28 @@ class Home extends Component {
           <header>
             <h1>New And Should Be At A Theatre Near You!</h1>
           </header>
-          <figure>
-            <h2>Featured movie:</h2>
-            <Link to={`/${this.state.random.id}`}>
-              <h2>{this.state.random.title}</h2>
-              <img
-                src={`https://image.tmdb.org/t/p/original${
-                  this.state.random.poster_path
-                }`}
-                alt=""
-              />
-            </Link>
-            <section>
-              <figcaption>{this.state.random.overview}</figcaption>
-              <h3>{this.state.random.release_date}</h3>
-            </section>
-          </figure>
+          <section className="individualBacks">
+            <figure>
+              <h2>Featured movie:</h2>
+              <Link to={`/${this.state.random.id}`}>
+                <h2>{this.state.random.title}</h2>
+                <section className="outerBorder">
+                  <section className="dottedBorder">
+                    <img
+                      src={`https://image.tmdb.org/t/p/original${
+                        this.state.random.poster_path
+                      }`}
+                      alt=""
+                    />
+                  </section>
+                </section>
+              </Link>
+              <section>
+                <figcaption>{this.state.random.overview}</figcaption>
+                <h3>{this.state.random.release_date}</h3>
+              </section>
+            </figure>
+          </section>
           {this.state.results.map((movie, i) => {
             return (
               <section key={i} className="individualBacks">
