@@ -6,13 +6,17 @@ html {
   height: 100%;
 }
 
+.individualBacks {
+  background-image: url(./images/theaterseats.jpg);
+  background-size: 100%;
+}
+
 body {
   margin: 0;
   min-height: 100%;
 }
 
 figure {
-  border: solid 1px black;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -25,6 +29,20 @@ header {
 }
 
 img {
+  border: solid 0.2rem gold;
   width: 20%;
   height: 20%;
+  margin: 1rem -10rem 1rem -10rem;
+}
+
+.dottedBorder {
+  border: dotted 0.2rem gold;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.outerBorder {
+  border: solid 0.2rem gold;
 }

@@ -49,16 +49,20 @@ class Home extends Component {
           {this.state.results.map((movie, i) => {
             console.log(movie)
             return (
-              <section key={i}>
+              <section key={i} className="individualBacks">
                 <figure>
                   <Link to={`/${this.state.results[i].id}`}>
                     <h2>{this.state.results[i].title}</h2>
-                    <img
-                      src={`https://image.tmdb.org/t/p/original${
-                        this.state.results[i].poster_path
-                      }`}
-                      alt=""
-                    />
+                    <section className="outerBorder">
+                      <section className="dottedBorder">
+                        <img
+                          src={`https://image.tmdb.org/t/p/original${
+                            this.state.results[i].poster_path
+                          }`}
+                          alt=""
+                        />
+                      </section>
+                    </section>
                   </Link>
                 </figure>
                 <section>
