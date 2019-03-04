@@ -19,7 +19,8 @@ class Home extends Component {
     description: '',
     releaseDate: '',
     poster: '',
-    id: ''
+    id: '',
+    random: ''
   }
 
   componentDidMount() {
@@ -35,8 +36,19 @@ class Home extends Component {
         this.setState({
           results: resp.data.results
         })
-        console.log(this.state)
+        console.log(this.state.results)
+        this.randomMovie()
       })
+  }
+
+  randomMovie = () => {
+    let randomize = Math.floor(Math.random() * this.state.results.length)
+    let randomMovie = this.state.results[randomize]
+    console.log(randomMovie.title)
+    this.setState({
+      random: randomMovie
+    })
+    console.log(this.state.random)
   }
 
   render() {
@@ -46,8 +58,22 @@ class Home extends Component {
           <header>
             <h1>New And Should Be At A Theatre Near You!</h1>
           </header>
+          <figure>
+            <Link to={`/${this.state.random.id}`}>
+              <h2>{this.state.random.title}</h2>
+              <img
+                src={`https://image.tmdb.org/t/p/original${
+                  this.state.random.poster_path
+                }`}
+                alt=""
+              />
+            </Link>
+            <section>
+              <figcaption>{this.state.random.overview}</figcaption>
+              <h3>{this.state.random.release_date}</h3>
+            </section>
+          </figure>
           {this.state.results.map((movie, i) => {
-            console.log(movie)
             return (
               <section key={i}>
                 <figure>
@@ -60,11 +86,11 @@ class Home extends Component {
                       alt=""
                     />
                   </Link>
+                  <section>
+                    <figcaption>{this.state.results[i].overview}</figcaption>
+                    <h3>{this.state.results[i].release_date}</h3>
+                  </section>
                 </figure>
-                <section>
-                  <figcaption>{this.state.results[i].overview}</figcaption>
-                  <h3>{this.state.results[i].release_date}</h3>
-                </section>
               </section>
             )
           })}
