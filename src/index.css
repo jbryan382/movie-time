@@ -9,6 +9,8 @@ html {
 .individualBacks {
   background-image: url(./images/theaterseats.jpg);
   background-size: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body {
@@ -28,11 +30,31 @@ header {
   justify-content: center;
 }
 
-img {
+.homepage {
   border: solid 0.2rem gold;
   width: 20%;
   height: 20%;
-  margin: 1rem -10rem 1rem -10rem;
+  /* margin: 1rem -10rem 1rem -10rem; */
+}
+
+.detailsfigure {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+
+  border: solid 0.2rem gold;
+  text-align: center;
+}
+
+.details {
+  border: solid 0.2rem gold;
+  width: 30%;
+  height: 30%;
+}
+
+figcaption {
+  padding: 1rem;
 }
 
 .dottedBorder {
@@ -41,8 +63,46 @@ img {
   justify-content: center;
   margin: 1rem 1rem 1rem 1rem;
   padding: 1rem 1rem 1rem 1rem;
+  background-color: rgba(231, 224, 189, 0.75);
 }
 
 .outerBorder {
   border: solid 0.2rem gold;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.cast {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+.head {
+  width: 100%;
+  margin: 1rem;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  margin: 1rem;
 }

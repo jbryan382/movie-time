@@ -55,53 +55,67 @@ class Home extends Component {
   render() {
     return (
       <>
-        <main>
+        <main className="individualBacks">
           <header>
-            <h1>New And Should Be At A Theatre Near You!</h1>
+            <h1>New and (Hopefully) at a Theatre Near You!</h1>
           </header>
-          <section className="individualBacks">
+          <section>
             <figure>
               <h2>Featured movie:</h2>
               <Link to={`/${this.state.random.id}`}>
-                <h2>{this.state.random.title}</h2>
                 <section className="outerBorder">
                   <section className="dottedBorder">
                     <img
+                      className="homepage"
                       src={`https://image.tmdb.org/t/p/original${
                         this.state.random.poster_path
                       }`}
                       alt=""
                     />
+                    <div>
+                      <section className="head">
+                        <h2>{this.state.random.title}</h2>
+                      </section>
+                      <section className="info">
+                        <figcaption>{this.state.random.overview}</figcaption>
+                        <h3>{this.state.random.release_date}</h3>
+                      </section>
+                    </div>
                   </section>
                 </section>
               </Link>
-              <section>
-                <figcaption>{this.state.random.overview}</figcaption>
-                <h3>{this.state.random.release_date}</h3>
-              </section>
+              <section />
             </figure>
           </section>
           {this.state.results.map((movie, i) => {
             return (
-              <section key={i} className="individualBacks">
+              <section key={i}>
                 <figure>
                   <Link to={`/${this.state.results[i].id}`}>
-                    <h2>{this.state.results[i].title}</h2>
                     <section className="outerBorder">
                       <section className="dottedBorder">
                         <img
+                          className="homepage"
                           src={`https://image.tmdb.org/t/p/original${
                             this.state.results[i].poster_path
                           }`}
                           alt=""
                         />
+                        <div>
+                          <section className="head">
+                            <h2>{this.state.results[i].title}</h2>
+                          </section>
+                          <section className="info">
+                            <figcaption>
+                              {this.state.results[i].overview}
+                            </figcaption>
+                            <h3>{this.state.results[i].release_date}</h3>
+                          </section>
+                        </div>
                       </section>
                     </section>
                   </Link>
-                  <section>
-                    <figcaption>{this.state.results[i].overview}</figcaption>
-                    <h3>{this.state.results[i].release_date}</h3>
-                  </section>
+                  <section />
                 </figure>
               </section>
             )

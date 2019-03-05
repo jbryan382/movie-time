@@ -63,6 +63,7 @@ class Movie extends Component {
           poster={`https://image.tmdb.org/t/p/original${this.state.poster}`}
           // cast={this.state.cast.name}
         />
+        <h2 className="cast">CAST</h2>
         <ul>
           {this.state.cast.map((cast, i) => {
             console.log(cast)
