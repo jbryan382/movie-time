@@ -54,7 +54,7 @@ class Movie extends Component {
 
   render() {
     return (
-      <>
+      <main className="individualBacks">
         <MovieDetails
           title={this.state.title}
           description={this.state.description}
@@ -70,7 +70,7 @@ class Movie extends Component {
             return <li key={i}>{this.state.cast[i].name}</li>
           })}
         </ul>
-      </>
+      </main>
     )
   }
 }

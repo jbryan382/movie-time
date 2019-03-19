@@ -55,6 +55,16 @@ header {
 
 figcaption {
   padding: 1rem;
+  background-color: rgba(231, 224, 189, 0.75);
+  margin-top: -1rem;
+}
+
+.movie-title {
+  background-color: rgba(231, 224, 189, 0.75);
+  margin: 0rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  /* margin-bottom: -0.5rem; */
 }
 
 .dottedBorder {
@@ -75,10 +85,17 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  background-color: rgba(231, 224, 189, 0.75);
+  height: 3rem;
+  margin-top: 0rem;
+  padding-top: 0.5rem;
 }
 
 .cast {
   text-align: center;
+  background-color: rgba(231, 224, 189, 0.75);
+  margin-bottom: 0rem;
+  padding-top: 0.5rem;
 }
 
 a {
